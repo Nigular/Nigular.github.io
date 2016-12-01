@@ -85,19 +85,19 @@
 
 
 <meta name="description" content="习惯用Apache集成环境，最近用hexo在本地搭建了静态博客后，每次访问都要打开localhost:4000端口。希望实现不用端口号，并且用一个简单的域名来打开它，如何实现呢？
-方法初探：利用nodejs的http-proxy模块实现1.利用npm安装http-proxy模块2.自定义一个自己喜欢的域名，如：testnode.com，然后做本地镜像，打开C:\Windows\System32\d">
+方法初探：利用nodejs的http-proxy模块实现1.利用npm安装http-proxy模块">
 <meta property="og:type" content="article">
 <meta property="og:title" content="nginx+apache共存配置，端口分发">
 <meta property="og:url" content="http://yoursite.com/2016/12/01/nginx1/index.html">
 <meta property="og:site_name" content="炎龙的个人博客">
 <meta property="og:description" content="习惯用Apache集成环境，最近用hexo在本地搭建了静态博客后，每次访问都要打开localhost:4000端口。希望实现不用端口号，并且用一个简单的域名来打开它，如何实现呢？
-方法初探：利用nodejs的http-proxy模块实现1.利用npm安装http-proxy模块2.自定义一个自己喜欢的域名，如：testnode.com，然后做本地镜像，打开C:\Windows\System32\d">
+方法初探：利用nodejs的http-proxy模块实现1.利用npm安装http-proxy模块">
 <meta property="og:image" content="http://i1.piimg.com/567571/cc76285ba9fe3d6e.png">
-<meta property="og:updated_time" content="2016-12-01T07:09:28.201Z">
+<meta property="og:updated_time" content="2016-12-01T08:28:08.754Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="nginx+apache共存配置，端口分发">
 <meta name="twitter:description" content="习惯用Apache集成环境，最近用hexo在本地搭建了静态博客后，每次访问都要打开localhost:4000端口。希望实现不用端口号，并且用一个简单的域名来打开它，如何实现呢？
-方法初探：利用nodejs的http-proxy模块实现1.利用npm安装http-proxy模块2.自定义一个自己喜欢的域名，如：testnode.com，然后做本地镜像，打开C:\Windows\System32\d">
+方法初探：利用nodejs的http-proxy模块实现1.利用npm安装http-proxy模块">
 <meta name="twitter:image" content="http://i1.piimg.com/567571/cc76285ba9fe3d6e.png">
 
 
@@ -343,7 +343,7 @@
 
       
         <p>习惯用Apache集成环境，最近用hexo在本地搭建了静态博客后，每次访问都要打开localhost:4000端口。希望实现不用端口号，并且用一个简单的域名来打开它，如何实现呢？</p>
-<h2 id="方法初探：利用nodejs的http-proxy模块实现"><a href="#方法初探：利用nodejs的http-proxy模块实现" class="headerlink" title="方法初探：利用nodejs的http-proxy模块实现"></a>方法初探：利用nodejs的http-proxy模块实现</h2><p>1.利用npm安装http-proxy模块<br>2.自定义一个自己喜欢的域名，如：testnode.com，然后做本地镜像，打开C:\Windows\System32\drivers\etc，用编辑器打开hosts，在后面添加一行<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">127.0.0.1 	 www.testnode.com</div></pre></td></tr></table></figure></p>
+<h2 id="方法初探：利用nodejs的http-proxy模块实现"><a href="#方法初探：利用nodejs的http-proxy模块实现" class="headerlink" title="方法初探：利用nodejs的http-proxy模块实现"></a>方法初探：利用nodejs的http-proxy模块实现</h2><p>1.利用npm安装http-proxy模块<br><a id="more"></a><br>2.自定义一个自己喜欢的域名，如：testnode.com，然后做本地镜像，打开C:\Windows\System32\drivers\etc，用编辑器打开hosts，在后面添加一行<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">127.0.0.1 	 www.testnode.com</div></pre></td></tr></table></figure></p>
 <p>3.新建proxy.js，代码如下：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line">var proxy=require(<span class="string">"http-proxy"</span>).createProxyServer(&#123;&#125;);</div><div class="line">proxy.on(<span class="keyword">function</span>(err,req,res)&#123;</div><div class="line">res.writeHead(500,&#123;</div><div class="line"><span class="string">'Content-Type'</span>:<span class="string">'text/plain'</span></div><div class="line">&#125;);</div><div class="line">&#125;);</div><div class="line"></div><div class="line">var server=require(<span class="string">'http'</span>).createServer(<span class="keyword">function</span>(req,res)&#123;</div><div class="line">var host= req.headers.host;</div><div class="line">switch(host)&#123;</div><div class="line">//如果输入的网址是：www.testnode.com，则访问：localhost:4000</div><div class="line"><span class="keyword">case</span> <span class="string">'www.testnode.com'</span>:</div><div class="line">proxy.web(req,res,&#123;target:<span class="string">"http://localhost:4000"</span>&#125;);</div><div class="line"><span class="built_in">break</span>;</div><div class="line">//如果输入的网址是：testnode.com，则访问：localhost:4000</div><div class="line"><span class="keyword">case</span> <span class="string">"testnode.com"</span>:</div><div class="line">proxy.web(req, res, &#123; target: <span class="string">'http://localhost:4000'</span> &#125;);</div><div class="line"><span class="built_in">break</span>;</div><div class="line"></div><div class="line">default: </div><div class="line">res.writeHead(200, &#123; </div><div class="line"><span class="string">'Content-Type'</span>: <span class="string">'text/plain'</span> </div><div class="line">&#125;); </div><div class="line"></div><div class="line">res.end(<span class="string">'Welcome to my server!'</span>);</div><div class="line">&#125;</div><div class="line">&#125;);</div><div class="line"></div><div class="line">console.log(<span class="string">"监听成功"</span>)</div><div class="line">server.listen(80);</div></pre></td></tr></table></figure></p>
 <p>4.在项目启动文件里，如app.js，引入该模块,然后启动nodejs服务，这时候在浏览器输入www.testnode.com，则会进入你指定的路径去。<br>利用以上方法就可以实现想要的跳转效果，不过问题来了，如果你环境里同时运行着Apache服务器，这个方法就失效了，因为系统会优先考虑Apache进程，你输入www.testnode.com后会发现打开的是localhsot</p>
 <h2 id="引入nginx，与Apache共存"><a href="#引入nginx，与Apache共存" class="headerlink" title="引入nginx，与Apache共存"></a>引入nginx，与Apache共存</h2><p>Nginx是一个高性能的HTTP和反向代理服务器，如果你的项目静态文件占多，那这个无疑是很好的选择。这里主要利用它的反向代理功能来实现端口分发。<br>众所周知，服务器域名绑定是不支持加端口号的，而访问一个域名默认的端口号都是80端口，在域名后加端口号又让用户体验骤降，这时候利用nginx就能实现不输入端口号也能访问非80端口的地址。<br>如何实现呢？这里前提是你环境里已经有Apache环境。</p>

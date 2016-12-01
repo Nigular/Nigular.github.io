@@ -339,20 +339,15 @@
 
       
         
-          
-            <p>习惯用Apache集成环境，最近用hexo在本地搭建了静态博客后，每次访问都要打开localhost:4000端口。希望实现不用端口号，并且用一个简单的域名来打开它，如何实现呢？</p>
-<h2 id="方法初探：利用nodejs的http-proxy模块实现"><a href="#方法初探：利用nodejs的http-proxy模块实现" class="headerlink" title="方法初探：利用nodejs的http-proxy模块实现"></a>方法初探：利用nodejs的http-proxy模块实现</h2><p>1.利用npm安装http-proxy模块<br>2.自定义一个自己喜欢的域名，如：testnode.com，然后做本地镜像，打开C:\Windows\System32\drivers\etc，用编辑器打开hosts，在后面添加一行<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">127.0.0.1 	 www.testnode.com</div></pre></td></tr></table></figure></p>
-<p>3.新建proxy.js，代码如下：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line">var proxy=require(<span class="string">"http-proxy"</span>).createProxyServer(&#123;&#125;);</div><div class="line">proxy.on(<span class="keyword">function</span>(err,req,res)&#123;</div><div class="line">res.writeHead(500,&#123;</div><div class="line"><span class="string">'Content-Type'</span>:<span class="string">'text/plain'</span></div><div class="line">&#125;);</div><div class="line">&#125;);</div><div class="line"></div><div class="line">var server=require(<span class="string">'http'</span>).createServer(<span class="keyword">function</span>(req,res)&#123;</div><div class="line">var host= req.headers.host;</div><div class="line">switch(host)&#123;</div><div class="line">//如果输入的网址是：www.testnode.com，则访问：localhost:4000</div><div class="line"><span class="keyword">case</span> <span class="string">'www.testnode.com'</span>:</div><div class="line">proxy.web(req,res,&#123;target:<span class="string">"http://localhost:4000"</span>&#125;);</div><div class="line"><span class="built_in">break</span>;</div><div class="line">//如果输入的网址是：testnode.com，则访问：localhost:4000</div><div class="line"><span class="keyword">case</span> <span class="string">"testnode.com"</span>:</div><div class="line">proxy.web(req, res, &#123; target: <span class="string">'http://localhost:4000'</span> &#125;);</div><div class="line"><span class="built_in">break</span>;</div><div class="line"></div><div class="line">default: </div><div class="line">res.writeHead(200, &#123; </div><div class="line"><span class="string">'Content-Type'</span>: <span class="string">'text/plain'</span> </div><div class="line">&#125;); </div><div class="line"></div><div class="line">res.end(<span class="string">'Welcome to my server!'</span>);</div><div class="line">&#125;</div><div class="line">&#125;);</div><div class="line"></div><div class="line">console.log(<span class="string">"监听成功"</span>)</div><div class="line">server.listen(80);</div></pre></td></tr></table></figure></p>
-<p>4.在项目启动文件里，如app.js，引入该模块,然后启动nodejs服务，这时候在浏览器输入www.testnode.com，则会进入你指定的路径去。<br>利用以上方法就可以实现想要的跳转效果，不过问题来了，如果你环境里同时运行着Apache服务器，这个方法就失效了，因为系统会优先考虑Apache进程，你输入www.testnode.com后会发现打开的是localhsot</p>
-<h2 id="引入nginx，与Apache共存"><a href="#引入nginx，与Apache共存" class="headerlink" title="引入nginx，与Apache共存"></a>引入nginx，与Apache共存</h2><p>Nginx是一个高性能的HTTP和反向代理服务器，如果你的项目静态文件占多，那这个无疑是很好的选择。这里主要利用它的反向代理功能来实现端口分发。<br>众所周知，服务器域名绑定是不支持加端口号的，而访问一个域名默认的端口号都是80端口，在域名后加端口号又让用户体验骤降，这时候利用nginx就能实现不输入端口号也能访问非80端口的地址。<br>如何实现呢？这里前提是你环境里已经有Apache环境。</p>
-<h3 id="1-下载安装nginx"><a href="#1-下载安装nginx" class="headerlink" title="1.下载安装nginx"></a>1.下载安装nginx</h3><p>讲真，nginx的启动比nodejs啊，Apache啊都简单，下载好之后有一个包，找一个非中文路径的文件存放，然后点击nginx.exe就可以启动服务器了。<br>如果你已经启动Apache服务器的话，需要先关闭Apache服务，再启动nginx。<br>这时候你在浏览器里输入localhsot，就会看到nginx的默认首页。<br><img src="http://i1.piimg.com/567571/cc76285ba9fe3d6e.png"><br>我装的是windows版，<a href="http://www.pc6.com/softview/SoftView_106085.html" target="_blank" rel="external">下载链接可以点击这里</a>;</p>
-<h3 id="2-把Apache服务器占用的端口改为其他端口号，如8800"><a href="#2-把Apache服务器占用的端口改为其他端口号，如8800" class="headerlink" title="2.把Apache服务器占用的端口改为其他端口号，如8800"></a>2.把Apache服务器占用的端口改为其他端口号，如8800</h3><p>打开Apache的根目录，\conf\httpd.conf,然后搜索80，你会发现有个地方是：Listen 80，把它改为Listen 8800；<br>再打开httpd-vhosts.conf，看下里面有没有配置过80端口的主机，如果有，则把80改为8800，如果存在，一般是长这样的：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;VirtualHost *:8800&gt;</div></pre></td></tr></table></figure></p>
-<h3 id="3-修改nginx的配置文件"><a href="#3-修改nginx的配置文件" class="headerlink" title="3.修改nginx的配置文件"></a>3.修改nginx的配置文件</h3><p>找到nginx的根目录，编辑器打开\conf\nginx.conf,然后在http{} 里添加一个 server节点<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">server &#123;</div><div class="line">    listen       80;</div><div class="line">	server_name  www.testnode.com;</div><div class="line">	location / &#123;</div><div class="line">        proxy_pass  http://127.0.0.1:8800;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>上面的意思是：监听80端口，当输入www.testnode.com的时候，分发到<a href="http://127.0.0.1:8800" target="_blank" rel="external">http://127.0.0.1:8800</a> 去。<br>这种策略之下，因为现在Apache监听的是8800端口，所以你需要为每一个在Apache服务器下的项目，用到的域名都增加一条这样的配置。<br>当然，大部分项目可以直接丢进去nginx服务器里运行的。</p>
-<h3 id="4-重启Apache服务器与nginx服务器"><a href="#4-重启Apache服务器与nginx服务器" class="headerlink" title="4.重启Apache服务器与nginx服务器"></a>4.重启Apache服务器与nginx服务器</h3><p>nginx服务器的几个命令，先用cmd去到nginx的根目录<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">开启nginx服务: start nginx</div><div class="line">立即停止nginx,不保存相关信息: nginx <span class="_">-s</span> stop</div><div class="line">正常退出nginx,并保存相关信息： nginx <span class="_">-s</span> quit</div><div class="line">重启： nginx <span class="_">-s</span> reload</div></pre></td></tr></table></figure></p>
-<p>完成以上步骤，并在本地hosts加好了127.0.0.1的映射，这时候再打开www.testnode.com，就可以访问到127.0.0.1:8800去了，这时候是分发到Apache服务器，如果直接访问localhost，则访问的是nginx服务器的根目录。</p>
-
-          
+          <p>习惯用Apache集成环境，最近用hexo在本地搭建了静态博客后，每次访问都要打开localhost:4000端口。希望实现不用端口号，并且用一个简单的域名来打开它，如何实现呢？</p>
+<h2 id="方法初探：利用nodejs的http-proxy模块实现"><a href="#方法初探：利用nodejs的http-proxy模块实现" class="headerlink" title="方法初探：利用nodejs的http-proxy模块实现"></a>方法初探：利用nodejs的http-proxy模块实现</h2><p>1.利用npm安装http-proxy模块<br>
+          <!--noindex-->
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/12/01/nginx1/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -482,12 +477,14 @@
 
       
         
-          
-            <h3 id="主题安装"><a href="#主题安装" class="headerlink" title="主题安装"></a>主题安装</h3><p>去到blog根目录，通过gitbash，clone一个主题下来，<a href="https://www.zhihu.com/question/24422335" target="_blank" rel="external">好看的主题地址</a><br>然后去到根目录的_config.yml里，找到theme参数，添加一行:theme:next，并设置language: zh-Hans<br>重启，大功告成</p>
-<h3 id="其他关于next主题的设置"><a href="#其他关于next主题的设置" class="headerlink" title="其他关于next主题的设置"></a>其他关于next主题的设置</h3><p>请参考<a href="http://theme-next.iissnan.com/" target="_blank" rel="external">猛击链接</a></p>
-<h3 id="多说评论等插件的安装"><a href="#多说评论等插件的安装" class="headerlink" title="多说评论等插件的安装"></a>多说评论等插件的安装</h3><p>请参考<a href="http://theme-next.iissnan.com/third-party-services.html" target="_blank" rel="external">猛击链接</a></p>
-
-          
+          <h3 id="主题安装"><a href="#主题安装" class="headerlink" title="主题安装"></a>主题安装</h3><p>去到blog根目录，通过gitbash，clone一个主题下来，<a href="https://www.zhihu.com/question/24422335">好看的主题地址</a><br>然后去到根目录的_config.yml里，找到theme参数，添加一行:theme:next，并设置language: zh-Hans<br>重启，大功告成<br>
+          <!--noindex-->
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/11/28/nexthema/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -617,19 +614,16 @@
 
       
         
-          
-            <p>新手用git上传下载时，都会遇到提示输入用户名和密码的情况，神烦。只要设置好公钥，就可以免去每次输入了。</p>
+          <p>新手用git上传下载时，都会遇到提示输入用户名和密码的情况，神烦。只要设置好公钥，就可以免去每次输入了。</p>
 <h3 id="打开cmd，检查SSH公钥是否存在"><a href="#打开cmd，检查SSH公钥是否存在" class="headerlink" title="打开cmd，检查SSH公钥是否存在"></a>打开cmd，检查SSH公钥是否存在</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">cd</span> ~/.ssh</div></pre></td></tr></table></figure>
-<p>这个文件也可以在C盘/用户/你的用户名/.ssh里找下，如果没有，则需要创建一次</p>
-<h3 id="如果没有安装ssh，那么使用下面的指令安装"><a href="#如果没有安装ssh，那么使用下面的指令安装" class="headerlink" title="如果没有安装ssh，那么使用下面的指令安装"></a>如果没有安装ssh，那么使用下面的指令安装</h3><p>sudo apt-get install ssh</p>
-<h3 id="在此目录下生成SSH公钥"><a href="#在此目录下生成SSH公钥" class="headerlink" title="在此目录下生成SSH公钥"></a>在此目录下生成SSH公钥</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ ssh-keygen -t rsa -C <span class="string">"your_email@youremail.com"</span></div></pre></td></tr></table></figure>
-<p>###　为这个.ssh文件命名<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Creates a new ssh key using the provided email Generating public/private rsa key pair. </div><div class="line">Enter file <span class="keyword">in</span> <span class="built_in">which</span> to save the key (/home/you/.ssh/id_rsa):</div></pre></td></tr></table></figure></p>
-<h3 id="输入github密码"><a href="#输入github密码" class="headerlink" title="输入github密码"></a>输入github密码</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Enter passphrase (empty <span class="keyword">for</span> no passphrase): [Type a passphrase] </div><div class="line">Enter same passphrase again: [Type passphrase again]</div></pre></td></tr></table></figure>
-<h3 id="在-ssh文件夹里会生成新的两个文件"><a href="#在-ssh文件夹里会生成新的两个文件" class="headerlink" title="在.ssh文件夹里会生成新的两个文件"></a>在.ssh文件夹里会生成新的两个文件</h3><h3 id="在github添加一个ssh"><a href="#在github添加一个ssh" class="headerlink" title="在github添加一个ssh"></a>在github添加一个ssh</h3><p>打开你的github，菜单栏找setting，然后找到SSH管理，添加一个ssh，把刚刚生成的文件后缀名为.pub里的内容，复制到里面</p>
-<h3 id="测试是否成功"><a href="#测试是否成功" class="headerlink" title="测试是否成功"></a>测试是否成功</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ssh -T git@github.com</div></pre></td></tr></table></figure>
-<p>根据提示输入或者继续<br>Hi username!<br>You’ve successfully authenticated, but GitHub does not provide shell access.<br>当你看到这段话时，表示成功添加了公钥</p>
-
-          
+<p>这个文件也可以在C盘/用户/你的用户名/.ssh里找下，如果没有，则需要创建一次<br>
+          <!--noindex-->
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/11/28/gongyao/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -759,17 +753,14 @@
 
       
         
-          
-            <h3 id="1-打开cmd，去到根目录下，执行命令新建一个文章"><a href="#1-打开cmd，去到根目录下，执行命令新建一个文章" class="headerlink" title="1.打开cmd，去到根目录下，执行命令新建一个文章"></a>1.打开cmd，去到根目录下，执行命令新建一个文章</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"文章标题"</span></div><div class="line">(简写: hexo n)</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="2-编辑文章，在source-posts-文章名-里，编辑-md的文件"><a href="#2-编辑文章，在source-posts-文章名-里，编辑-md的文件" class="headerlink" title="2.编辑文章，在source/_posts/文章名/ 里，编辑.md的文件"></a>2.编辑文章，在source/_posts/文章名/ 里，编辑.md的文件</h3><h3 id="3-开启服务器的命令"><a href="#3-开启服务器的命令" class="headerlink" title="3.开启服务器的命令"></a>3.开启服务器的命令</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div><div class="line">(简写: hexo s)</div></pre></td></tr></table></figure>
-<h3 id="4-生成静态文件的命令"><a href="#4-生成静态文件的命令" class="headerlink" title="4.生成静态文件的命令"></a>4.生成静态文件的命令</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div><div class="line">(简写: hexo g)</div></pre></td></tr></table></figure>
-<h3 id="5-部署到远程站点（需要配置-还需要有github账号）"><a href="#5-部署到远程站点（需要配置-还需要有github账号）" class="headerlink" title="5.部署到远程站点（需要配置,还需要有github账号）"></a>5.部署到远程站点（需要配置,还需要有github账号）</h3><p>用命令发布前，需要先利用Node安装一个组件：<br>npm install hexo-deployer-git -S<br>然后在blog根目录下，右键打开Git Bash Here，再用以下命令行提交到远程</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
-<h3 id="6-踩过的坑，标签页链接错误问题"><a href="#6-踩过的坑，标签页链接错误问题" class="headerlink" title="6.踩过的坑，标签页链接错误问题"></a>6.踩过的坑，标签页链接错误问题</h3><p>请参考:<a href="https://www.zhihu.com/question/29017171" target="_blank" rel="external">hexo 下的分类和表签无法显示，怎么解决</a></p>
-<p>更多请点击：<br><a href="http://www.tuicool.com/articles/ueI7naV" target="_blank" rel="external">参考资料一</a><br><a href="https://hexo.io/zh-cn/docs/" target="_blank" rel="external">参考资料二</a><br><a href="https://segmentfault.com/a/1190000003880479" target="_blank" rel="external">参考资料三</a><br><a href="http://theme-next.iissnan.com/" target="_blank" rel="external">参考资料四</a></p>
-
-          
+          <h3 id="1-打开cmd，去到根目录下，执行命令新建一个文章"><a href="#1-打开cmd，去到根目录下，执行命令新建一个文章" class="headerlink" title="1.打开cmd，去到根目录下，执行命令新建一个文章"></a>1.打开cmd，去到根目录下，执行命令新建一个文章</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"文章标题"</span></div><div class="line">(简写: hexo n)</div></pre></td></tr></table></figure>
+          <!--noindex-->
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/11/28/hello-world/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
