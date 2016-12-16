@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="hexo," />
+  <meta name="keywords" content="nodejs," />
 
 
 
@@ -84,16 +84,22 @@
 
 
 
-<meta name="description" content="主题安装去到blog根目录，通过gitbash，clone一个主题下来，好看的主题地址然后去到根目录的_config.yml里，找到theme参数，添加一行:theme:next，并设置language: zh-Hans重启，大功告成">
+<meta name="description" content="一个简单的爬虫程序，简单的思路，就是你通过一个链接，得到这个链接指向的网页的所有html元素，在通过匹配或者选择器，获取想爬的文本或者图片地址。需要用到的几个模块，包括：1234var fs = require(&amp;apos;fs&amp;apos;);var path = require(&amp;apos;path&amp;apos;);var request = require(&amp;apos;request&amp;apos;">
 <meta property="og:type" content="article">
-<meta property="og:title" content="关于hexo的一个主题next">
-<meta property="og:url" content="http://yoursite.com/2016/11/28/nexthema/index.html">
+<meta property="og:title" content="用nodejs搭建一写个简单的爬虫程序">
+<meta property="og:url" content="http://yoursite.com/2016/12/16/用nodejs搭建一写个简单的爬虫程序/index.html">
 <meta property="og:site_name" content="炎龙的个人博客">
-<meta property="og:description" content="主题安装去到blog根目录，通过gitbash，clone一个主题下来，好看的主题地址然后去到根目录的_config.yml里，找到theme参数，添加一行:theme:next，并设置language: zh-Hans重启，大功告成">
-<meta property="og:updated_time" content="2016-12-01T08:51:56.226Z">
+<meta property="og:description" content="一个简单的爬虫程序，简单的思路，就是你通过一个链接，得到这个链接指向的网页的所有html元素，在通过匹配或者选择器，获取想爬的文本或者图片地址。需要用到的几个模块，包括：1234var fs = require(&amp;apos;fs&amp;apos;);var path = require(&amp;apos;path&amp;apos;);var request = require(&amp;apos;request&amp;apos;">
+<meta property="og:image" content="http://p1.bqimg.com/567571/82477d136e34a0a6.png">
+<meta property="og:image" content="http://i1.piimg.com/567571/b1e9f307b241e45d.png">
+<meta property="og:image" content="http://i1.piimg.com/567571/c1b8cfa4a71cbc4d.png">
+<meta property="og:image" content="http://p1.bqimg.com/567571/fd1dec8c696060df.png">
+<meta property="og:image" content="http://i1.piimg.com/567571/95ce0b53693eb845.png">
+<meta property="og:updated_time" content="2016-12-16T07:17:56.392Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="关于hexo的一个主题next">
-<meta name="twitter:description" content="主题安装去到blog根目录，通过gitbash，clone一个主题下来，好看的主题地址然后去到根目录的_config.yml里，找到theme参数，添加一行:theme:next，并设置language: zh-Hans重启，大功告成">
+<meta name="twitter:title" content="用nodejs搭建一写个简单的爬虫程序">
+<meta name="twitter:description" content="一个简单的爬虫程序，简单的思路，就是你通过一个链接，得到这个链接指向的网页的所有html元素，在通过匹配或者选择器，获取想爬的文本或者图片地址。需要用到的几个模块，包括：1234var fs = require(&amp;apos;fs&amp;apos;);var path = require(&amp;apos;path&amp;apos;);var request = require(&amp;apos;request&amp;apos;">
+<meta name="twitter:image" content="http://p1.bqimg.com/567571/82477d136e34a0a6.png">
 
 
 
@@ -121,13 +127,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2016/11/28/nexthema/"/>
+  <link rel="canonical" href="http://yoursite.com/2016/12/16/用nodejs搭建一写个简单的爬虫程序/"/>
 
 
 
 
 
-  <title> 关于hexo的一个主题next | 炎龙的个人博客 </title>
+  <title> 用nodejs搭建一写个简单的爬虫程序 | 炎龙的个人博客 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -258,7 +264,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/11/28/nexthema/">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/12/16/用nodejs搭建一写个简单的爬虫程序/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="Nigular">
@@ -282,7 +288,7 @@
             
             
               
-                关于hexo的一个主题next
+                用nodejs搭建一写个简单的爬虫程序
               
             
           </h1>
@@ -295,8 +301,8 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-11-28T18:27:53+08:00">
-                2016-11-28
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-12-16T12:02:38+08:00">
+                2016-12-16
               </time>
             
 
@@ -306,31 +312,13 @@
           </span>
 
           
-            <span class="post-category" >
-              <span class="post-meta-divider">|</span>
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/技术/" itemprop="url" rel="index">
-                    <span itemprop="name">技术</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
 
           
             
               <span class="post-comments-count">
                 <span class="post-meta-divider">|</span>
-                <a href="/2016/11/28/nexthema/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/11/28/nexthema/" itemprop="commentCount"></span>
+                <a href="/2016/12/16/用nodejs搭建一写个简单的爬虫程序/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/12/16/用nodejs搭建一写个简单的爬虫程序/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -340,7 +328,7 @@
 
           
           
-             <span id="/2016/11/28/nexthema/" class="leancloud_visitors" data-flag-title="关于hexo的一个主题next">
+             <span id="/2016/12/16/用nodejs搭建一写个简单的爬虫程序/" class="leancloud_visitors" data-flag-title="用nodejs搭建一写个简单的爬虫程序">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -365,9 +353,19 @@
       
 
       
-        <h3 id="主题安装"><a href="#主题安装" class="headerlink" title="主题安装"></a>主题安装</h3><p>去到blog根目录，通过gitbash，clone一个主题下来，<a href="https://www.zhihu.com/question/24422335" target="_blank" rel="external">好看的主题地址</a><br>然后去到根目录的_config.yml里，找到theme参数，添加一行:theme:next，并设置language: zh-Hans<br>重启，大功告成<br><a id="more"></a></p>
-<h3 id="其他关于next主题的设置"><a href="#其他关于next主题的设置" class="headerlink" title="其他关于next主题的设置"></a>其他关于next主题的设置</h3><p>请参考<a href="http://theme-next.iissnan.com/" target="_blank" rel="external">猛击链接</a></p>
-<h3 id="多说评论等插件的安装"><a href="#多说评论等插件的安装" class="headerlink" title="多说评论等插件的安装"></a>多说评论等插件的安装</h3><p>请参考<a href="http://theme-next.iissnan.com/third-party-services.html" target="_blank" rel="external">猛击链接</a></p>
+        <p>一个简单的爬虫程序，简单的思路，就是你通过一个链接，得到这个链接指向的网页的所有html元素，在通过匹配或者选择器，获取想爬的文本或者图片地址。<br>需要用到的几个模块，包括：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">var fs = require(&apos;fs&apos;);</div><div class="line">var path = require(&apos;path&apos;);</div><div class="line">var request = require(&apos;request&apos;);</div><div class="line">var cheerio = require(&apos;cheerio&apos;);</div></pre></td></tr></table></figure></p>
+<a id="more"></a>
+<p>新建一个文件夹，新建一个app.js，包含以上的模块包，如果没有就用npm install 来进行安装<br>第一步，先用request，获取一个网页的html<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">var request = require(&apos;request&apos;);</div><div class="line">var requesturl = &quot;https://www.doutula.com/photo/list/&quot;; //斗图啦网的最新表情图片</div><div class="line">request(requseturl,function(error,response,body)&#123;</div><div class="line">	if(!error &amp;&amp; rewponse.statusCode==200)&#123;</div><div class="line">		console.log(body);</div><div class="line">	&#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
+<p>打开cmd，切换到项目文件下，运行: node app.js,此时会得到类似下面这样的代码<br><img src="http://p1.bqimg.com/567571/82477d136e34a0a6.png"><br>明显的，这是我们用request请求到的此页面的HTML，然后我们该使用cheerio模块来解析这个页面了<br>其实使用cheerio跟jquery是十分相似的，我们可以通过找一些元素布局的规律来匹配想要的东西<br>例如我们想拿到网页里的图片列表，先分析页面代码<br><img src="http://i1.piimg.com/567571/b1e9f307b241e45d.png"><br>通过分析可以看到，我们的目标img藏在.page-content的a标签里。<br>我们写一个方法，用来寻找页面中的img标签的src地址，这里要注意的是，<br>在上图里图片的真实地址藏在了img的data-original里，再通过lazyload加载进来的，<br>所以我们拿的时候需要用attribs[“data-original”]来获取。代码如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">function searchData(data)&#123;</div><div class="line">	var $ = cheerio.load(data); </div><div class="line">    var imgArr = $(&apos;.page-content img&apos;).toArray();  //用toArray()方法把找到的图片转为数组</div><div class="line">    for (var i=0; i&lt;imgArr.length; i++) &#123;</div><div class="line">        var imgsrc = imgArr[i].attribs.src;  //用循环读出数组中每个src地址</div><div class="line">        console.log(imgsrc);              //输出地址</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>执行后应该可以看到输出一大串的图片地址，类似下图：</p>
+<p><img src="http://i1.piimg.com/567571/c1b8cfa4a71cbc4d.png"></p>
+<p>到此我们已经拿到想要的图片地址了。偶尔会看到一些underfined的情况，分析后发现这些是标签图片，所以不用管，特殊情况特殊处理。<br>当然只拿到地址对我们来说没有意义，能下载下来才是王道。<br>在这里我们可以调用request模块的head方法来下载，请求到图片再调用fs文件系统模块中的createWriteStream写入流数据的方法下载到本地目录。<br>写一个执行下载单个图片的方法如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">function downloadImg(uri, filename)&#123;</div><div class="line">    request.get(&#123;		 //调用request的管道来下载到 images文件夹下</div><div class="line">	  url: uri</div><div class="line">	&#125;).pipe(fs.createWriteStream(&apos;downloads/&apos;+filename)).on(&apos;close&apos;, function()&#123;</div><div class="line">		 console.log(filename+&apos; done&apos;);		//提示该图片下载完成</div><div class="line">	&#125;);</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
+<p>其中filename的话需要读取到单个图片的图片名字，可以用path.basename来读取<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">var filename = path.basename(address);</div></pre></td></tr></table></figure></p>
+<p>这时候，再把下载方法放在循环里，就可以了一次执行了,执行前要先在app.js同级目录新建一个downloads文件，用来装下载的图片。</p>
+<p>所有代码如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">var fs = require(&apos;fs&apos;);</div><div class="line">var path = require(&apos;path&apos;);</div><div class="line">var request = require(&apos;request&apos;);</div><div class="line">var cheerio = require(&apos;cheerio&apos;);</div><div class="line"></div><div class="line">var request = require(&apos;request&apos;);</div><div class="line">var requesturl = &quot;https://www.doutula.com/photo/list/&quot;; //斗图啦网的最新表情列表</div><div class="line">request(requesturl,function(error,response,body)&#123;</div><div class="line">	if(!error &amp;&amp; response.statusCode==200)&#123;</div><div class="line">		//console.log(body);</div><div class="line">		searchData(body);</div><div class="line">	&#125;</div><div class="line">&#125;);</div><div class="line"></div><div class="line">function searchData(data)&#123;</div><div class="line">	var $ = cheerio.load(data); </div><div class="line">    var imgArr = $(&apos;.page-content img&apos;).toArray();  //用toArray()方法把找到的图片转为数组</div><div class="line">    for (var i=0; i&lt;imgArr.length; i++) &#123;</div><div class="line">        var imgsrc = imgArr[i].attribs[&quot;data-original&quot;];  //用循环读出数组中每个真实地址</div><div class="line">        //console.log(imgsrc);              //输出地址</div><div class="line">        if(imgsrc!==undefined)&#123;</div><div class="line">        	var filename = parseUrlForFileName(imgsrc);  //生成文件名</div><div class="line">        	//console.log(filename);</div><div class="line">	        downloadImg(imgsrc,filename);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">function parseUrlForFileName(address) &#123;</div><div class="line">    var filename = path.basename(address);</div><div class="line">    return filename;</div><div class="line">&#125;</div><div class="line"></div><div class="line">function downloadImg(uri, filename)&#123;</div><div class="line">    request.get(&#123;		 //调用request的管道来下载到 images文件夹下</div><div class="line">	  url: uri</div><div class="line">	&#125;).pipe(fs.createWriteStream(&apos;downloads/&apos;+filename)).on(&apos;close&apos;, function()&#123;</div><div class="line">		 console.log(filename+&apos; done&apos;);		//提示该图片下载完成</div><div class="line">	&#125;);</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<p>执行所有代码后，会看到类似下图的效果：<br><img src="http://p1.bqimg.com/567571/fd1dec8c696060df.png"><br><img src="http://i1.piimg.com/567571/95ce0b53693eb845.png"><br>然后你打开downloads文件就会发现你想下载的图片都在里面了。</p>
+<p>短短不够四十行的代码就可以批量趴图了，很屌有木有？宅男们可以通过这个简单的方法把那些图片批量保存下来了，你懂的。。。</p>
 
       
     </div>
@@ -391,7 +389,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/hexo/" rel="tag"># hexo</a>
+            <a href="/tags/nodejs/" rel="tag"># nodejs</a>
           
         </div>
       
@@ -400,8 +398,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/11/28/gongyao/" rel="next" title="github生成SSH公钥">
-                <i class="fa fa-chevron-left"></i> github生成SSH公钥
+              <a href="/2016/12/01/nginx1/" rel="next" title="nginx+apache共存配置，端口分发">
+                <i class="fa fa-chevron-left"></i> nginx+apache共存配置，端口分发
               </a>
             
           </div>
@@ -409,10 +407,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/12/01/nginx1/" rel="prev" title="nginx+apache共存配置，端口分发">
-                nginx+apache共存配置，端口分发 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -438,8 +432,8 @@
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2016/11/28/nexthema/"
-           data-title="关于hexo的一个主题next" data-url="http://yoursite.com/2016/11/28/nexthema/">
+      <div class="ds-thread" data-thread-key="2016/12/16/用nodejs搭建一写个简单的爬虫程序/"
+           data-title="用nodejs搭建一写个简单的爬虫程序" data-url="http://yoursite.com/2016/12/16/用nodejs搭建一写个简单的爬虫程序/">
       </div>
     
   </div>
@@ -463,17 +457,8 @@
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview">
-            站点概览
-          </li>
-        </ul>
-      
 
-      <section class="site-overview sidebar-panel">
+      <section class="site-overview sidebar-panel sidebar-panel-active">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="http://p1.bpimg.com/567571/d27788b16d0b1234.jpg"
@@ -546,22 +531,6 @@
 
       </section>
 
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#主题安装"><span class="nav-number">1.</span> <span class="nav-text">主题安装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#其他关于next主题的设置"><span class="nav-number">2.</span> <span class="nav-text">其他关于next主题的设置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#多说评论等插件的安装"><span class="nav-number">3.</span> <span class="nav-text">多说评论等插件的安装</span></a></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
       
 
     </div>
