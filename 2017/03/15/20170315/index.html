@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="nodejs," />
+  <meta name="keywords" content="webpack," />
 
 
 
@@ -84,22 +84,27 @@
 
 
 
-<meta name="description" content="一个简单的爬虫程序，简单的思路，就是你通过一个链接，得到这个链接指向的网页的所有html元素，在通过匹配或者选择器，获取想爬的文本或者图片地址。需要用到的几个模块，包括：1234var fs = require(&amp;apos;fs&amp;apos;);var path = require(&amp;apos;path&amp;apos;);var request = require(&amp;apos;request&amp;apos;">
+<meta name="description" content="最近开始入手webpack，尝试结合vuejs实现模块化开发功能。由于发现了一个基于vuejs的第ui库~mint-ui，现在想把这些整合来做一个项目的脚手架。
+那么从零开始吧，一步步搭建。
+第一步首先安装好所需的开发环境。首先你需要安装好Node环境以及npm(略过)。接着从webpack开始入手，用 npm 安装 Webpack：1$ npm install webpack -g
+此时 Web">
 <meta property="og:type" content="article">
-<meta property="og:title" content="用nodejs搭建一写个简单的爬虫程序">
-<meta property="og:url" content="http://yoursite.com/2016/12/16/用nodejs搭建一写个简单的爬虫程序/index.html">
+<meta property="og:title" content="从零开始搭建webpack项目(1)">
+<meta property="og:url" content="http://yoursite.com/2017/03/15/20170315/index.html">
 <meta property="og:site_name" content="炎龙的个人博客">
-<meta property="og:description" content="一个简单的爬虫程序，简单的思路，就是你通过一个链接，得到这个链接指向的网页的所有html元素，在通过匹配或者选择器，获取想爬的文本或者图片地址。需要用到的几个模块，包括：1234var fs = require(&amp;apos;fs&amp;apos;);var path = require(&amp;apos;path&amp;apos;);var request = require(&amp;apos;request&amp;apos;">
-<meta property="og:image" content="http://p1.bqimg.com/567571/82477d136e34a0a6.png">
-<meta property="og:image" content="http://i1.piimg.com/567571/b1e9f307b241e45d.png">
-<meta property="og:image" content="http://i1.piimg.com/567571/c1b8cfa4a71cbc4d.png">
-<meta property="og:image" content="http://p1.bqimg.com/567571/fd1dec8c696060df.png">
-<meta property="og:image" content="http://i1.piimg.com/567571/95ce0b53693eb845.png">
-<meta property="og:updated_time" content="2016-12-16T07:17:56.392Z">
+<meta property="og:description" content="最近开始入手webpack，尝试结合vuejs实现模块化开发功能。由于发现了一个基于vuejs的第ui库~mint-ui，现在想把这些整合来做一个项目的脚手架。
+那么从零开始吧，一步步搭建。
+第一步首先安装好所需的开发环境。首先你需要安装好Node环境以及npm(略过)。接着从webpack开始入手，用 npm 安装 Webpack：1$ npm install webpack -g
+此时 Web">
+<meta property="og:image" content="http://p1.bqimg.com/567571/51785060a7bc8a3a.png">
+<meta property="og:updated_time" content="2017-03-15T07:47:28.333Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="用nodejs搭建一写个简单的爬虫程序">
-<meta name="twitter:description" content="一个简单的爬虫程序，简单的思路，就是你通过一个链接，得到这个链接指向的网页的所有html元素，在通过匹配或者选择器，获取想爬的文本或者图片地址。需要用到的几个模块，包括：1234var fs = require(&amp;apos;fs&amp;apos;);var path = require(&amp;apos;path&amp;apos;);var request = require(&amp;apos;request&amp;apos;">
-<meta name="twitter:image" content="http://p1.bqimg.com/567571/82477d136e34a0a6.png">
+<meta name="twitter:title" content="从零开始搭建webpack项目(1)">
+<meta name="twitter:description" content="最近开始入手webpack，尝试结合vuejs实现模块化开发功能。由于发现了一个基于vuejs的第ui库~mint-ui，现在想把这些整合来做一个项目的脚手架。
+那么从零开始吧，一步步搭建。
+第一步首先安装好所需的开发环境。首先你需要安装好Node环境以及npm(略过)。接着从webpack开始入手，用 npm 安装 Webpack：1$ npm install webpack -g
+此时 Web">
+<meta name="twitter:image" content="http://p1.bqimg.com/567571/51785060a7bc8a3a.png">
 
 
 
@@ -127,13 +132,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2016/12/16/用nodejs搭建一写个简单的爬虫程序/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/03/15/20170315/"/>
 
 
 
 
 
-  <title> 用nodejs搭建一写个简单的爬虫程序 | 炎龙的个人博客 </title>
+  <title> 从零开始搭建webpack项目(1) | 炎龙的个人博客 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -264,7 +269,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/12/16/用nodejs搭建一写个简单的爬虫程序/">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/03/15/20170315/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="Nigular">
@@ -288,7 +293,7 @@
             
             
               
-                用nodejs搭建一写个简单的爬虫程序
+                从零开始搭建webpack项目(1)
               
             
           </h1>
@@ -301,8 +306,8 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-12-16T12:02:38+08:00">
-                2016-12-16
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-03-15T11:48:30+08:00">
+                2017-03-15
               </time>
             
 
@@ -317,8 +322,8 @@
             
               <span class="post-comments-count">
                 <span class="post-meta-divider">|</span>
-                <a href="/2016/12/16/用nodejs搭建一写个简单的爬虫程序/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/12/16/用nodejs搭建一写个简单的爬虫程序/" itemprop="commentCount"></span>
+                <a href="/2017/03/15/20170315/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/03/15/20170315/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -328,7 +333,7 @@
 
           
           
-             <span id="/2016/12/16/用nodejs搭建一写个简单的爬虫程序/" class="leancloud_visitors" data-flag-title="用nodejs搭建一写个简单的爬虫程序">
+             <span id="/2017/03/15/20170315/" class="leancloud_visitors" data-flag-title="从零开始搭建webpack项目(1)">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -353,19 +358,31 @@
       
 
       
-        <p>一个简单的爬虫程序，简单的思路，就是你通过一个链接，得到这个链接指向的网页的所有html元素，在通过匹配或者选择器，获取想爬的文本或者图片地址。<br>需要用到的几个模块，包括：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">var fs = require(&apos;fs&apos;);</div><div class="line">var path = require(&apos;path&apos;);</div><div class="line">var request = require(&apos;request&apos;);</div><div class="line">var cheerio = require(&apos;cheerio&apos;);</div></pre></td></tr></table></figure></p>
-<a id="more"></a>
-<p>新建一个文件夹，新建一个app.js，包含以上的模块包，如果没有就用npm install 来进行安装<br>第一步，先用request，获取一个网页的html<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">var request = require(&apos;request&apos;);</div><div class="line">var requesturl = &quot;https://www.doutula.com/photo/list/&quot;; //斗图啦网的最新表情图片</div><div class="line">request(requseturl,function(error,response,body)&#123;</div><div class="line">	if(!error &amp;&amp; rewponse.statusCode==200)&#123;</div><div class="line">		console.log(body);</div><div class="line">	&#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
-<p>打开cmd，切换到项目文件下，运行: node app.js,此时会得到类似下面这样的代码<br><img src="http://p1.bqimg.com/567571/82477d136e34a0a6.png"><br>明显的，这是我们用request请求到的此页面的HTML，然后我们该使用cheerio模块来解析这个页面了<br>其实使用cheerio跟jquery是十分相似的，我们可以通过找一些元素布局的规律来匹配想要的东西<br>例如我们想拿到网页里的图片列表，先分析页面代码<br><img src="http://i1.piimg.com/567571/b1e9f307b241e45d.png"><br>通过分析可以看到，我们的目标img藏在.page-content的a标签里。<br>我们写一个方法，用来寻找页面中的img标签的src地址，这里要注意的是，<br>在上图里图片的真实地址藏在了img的data-original里，再通过lazyload加载进来的，<br>所以我们拿的时候需要用attribs[“data-original”]来获取。代码如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">function searchData(data)&#123;</div><div class="line">	var $ = cheerio.load(data); </div><div class="line">    var imgArr = $(&apos;.page-content img&apos;).toArray();  //用toArray()方法把找到的图片转为数组</div><div class="line">    for (var i=0; i&lt;imgArr.length; i++) &#123;</div><div class="line">        var imgsrc = imgArr[i].attribs.src;  //用循环读出数组中每个src地址</div><div class="line">        console.log(imgsrc);              //输出地址</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>执行后应该可以看到输出一大串的图片地址，类似下图：</p>
-<p><img src="http://i1.piimg.com/567571/c1b8cfa4a71cbc4d.png"></p>
-<p>到此我们已经拿到想要的图片地址了。偶尔会看到一些underfined的情况，分析后发现这些是标签图片，所以不用管，特殊情况特殊处理。<br>当然只拿到地址对我们来说没有意义，能下载下来才是王道。<br>在这里我们可以调用request模块的head方法来下载，请求到图片再调用fs文件系统模块中的createWriteStream写入流数据的方法下载到本地目录。<br>写一个执行下载单个图片的方法如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">function downloadImg(uri, filename)&#123;</div><div class="line">    request.get(&#123;		 //调用request的管道来下载到 images文件夹下</div><div class="line">	  url: uri</div><div class="line">	&#125;).pipe(fs.createWriteStream(&apos;downloads/&apos;+filename)).on(&apos;close&apos;, function()&#123;</div><div class="line">		 console.log(filename+&apos; done&apos;);		//提示该图片下载完成</div><div class="line">	&#125;);</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
-<p>其中filename的话需要读取到单个图片的图片名字，可以用path.basename来读取<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">var filename = path.basename(address);</div></pre></td></tr></table></figure></p>
-<p>这时候，再把下载方法放在循环里，就可以了一次执行了,执行前要先在app.js同级目录新建一个downloads文件，用来装下载的图片。</p>
-<p>所有代码如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">var fs = require(&apos;fs&apos;);</div><div class="line">var path = require(&apos;path&apos;);</div><div class="line">var request = require(&apos;request&apos;);</div><div class="line">var cheerio = require(&apos;cheerio&apos;);</div><div class="line"></div><div class="line">var request = require(&apos;request&apos;);</div><div class="line">var requesturl = &quot;https://www.doutula.com/photo/list/&quot;; //斗图啦网的最新表情列表</div><div class="line">request(requesturl,function(error,response,body)&#123;</div><div class="line">	if(!error &amp;&amp; response.statusCode==200)&#123;</div><div class="line">		//console.log(body);</div><div class="line">		searchData(body);</div><div class="line">	&#125;</div><div class="line">&#125;);</div><div class="line"></div><div class="line">function searchData(data)&#123;</div><div class="line">	var $ = cheerio.load(data); </div><div class="line">    var imgArr = $(&apos;.page-content img&apos;).toArray();  //用toArray()方法把找到的图片转为数组</div><div class="line">    for (var i=0; i&lt;imgArr.length; i++) &#123;</div><div class="line">        var imgsrc = imgArr[i].attribs[&quot;data-original&quot;];  //用循环读出数组中每个真实地址</div><div class="line">        //console.log(imgsrc);              //输出地址</div><div class="line">        if(imgsrc!==undefined)&#123;</div><div class="line">        	var filename = parseUrlForFileName(imgsrc);  //生成文件名</div><div class="line">        	//console.log(filename);</div><div class="line">	        downloadImg(imgsrc,filename);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">function parseUrlForFileName(address) &#123;</div><div class="line">    var filename = path.basename(address);</div><div class="line">    return filename;</div><div class="line">&#125;</div><div class="line"></div><div class="line">function downloadImg(uri, filename)&#123;</div><div class="line">    request.get(&#123;		 //调用request的管道来下载到 images文件夹下</div><div class="line">	  url: uri</div><div class="line">	&#125;).pipe(fs.createWriteStream(&apos;downloads/&apos;+filename)).on(&apos;close&apos;, function()&#123;</div><div class="line">		 console.log(filename+&apos; done&apos;);		//提示该图片下载完成</div><div class="line">	&#125;);</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
-<p>执行所有代码后，会看到类似下图的效果：<br><img src="http://p1.bqimg.com/567571/fd1dec8c696060df.png"><br><img src="http://i1.piimg.com/567571/95ce0b53693eb845.png"><br>然后你打开downloads文件就会发现你想下载的图片都在里面了。</p>
-<p>短短不够四十行的代码就可以批量趴图了，很屌有木有？宅男们可以通过这个简单的方法把那些图片批量保存下来了，你懂的。。。</p>
+        <p>最近开始入手webpack，尝试结合vuejs实现模块化开发功能。由于发现了一个基于vuejs的第ui库~mint-ui，现在想把这些整合来做一个项目的脚手架。</p>
+<p>那么从零开始吧，一步步搭建。</p>
+<p>第一步首先安装好所需的开发环境。首先你需要安装好Node环境以及npm(略过)。接着从webpack开始入手，用 npm 安装 Webpack：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ npm install webpack -g</div></pre></td></tr></table></figure></p>
+<p>此时 Webpack 已经安装到了全局环境下，可以通过命令行 webpack -h 试试。<br>为了方便开发并实时呈现代码效果，安装webpack-dev-server是个很好的选择：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"># 安装</div><div class="line">$ npm install webpack-dev-server -g</div><div class="line"></div><div class="line"># 运行</div><div class="line">$ webpack-dev-server --progress --colors</div></pre></td></tr></table></figure></p>
+<p>后面的两条附加命令 –progress 和 –colors是限时进度详情的，可以不用。</p>
+<p>接下来找一个地方新建项目目录，目录下新建一个空的json文件，文件名为package.json，cmd进到该目录文件，执行命令：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ npm init</div></pre></td></tr></table></figure></p>
+<p>根据提示填好所需的基本配置，（只有项目名称（name）和项目版本（version）是必填的，其他都是选填的）。<br>填完好会自动填充到package.json里面去，形成了一个最基本的配置信息表。后期一步步增加完善该文件。<br>关于package.json文件的具体参数解析，可参考阮一峰的谋篇文章-<a href="http://javascript.ruanyifeng.com/nodejs/packagejson.html" target="_blank" rel="external">《点击传送门》</a></p>
+<p>在这里，根据官方推荐，我们再把webpack安装到项目依赖中：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ npm install webpack --save-dev</div></pre></td></tr></table></figure></p>
+<p>下面我们开始搭建项目的基本结构：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">|- src/  --------------------- 项目源代码</div><div class="line">    |-css</div><div class="line">    |-images</div><div class="line">    |-js</div><div class="line">    |- main.js  -------------- 入口文件</div><div class="line">|- dist -------------- 输出后文件</div><div class="line">|- index.html  --------------- HTML 模板</div><div class="line">|- package.json  ------------- npm 配置文件</div><div class="line">|- webpack.config.js  ------ webpack 配置文件</div></pre></td></tr></table></figure></p>
+<p>接下来我们需要安装一些必要的Loader(模块和资源的转换器),从最基本的css转换器开始：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install css-loader style-loader --save-dev</div></pre></td></tr></table></figure>
+<p>自动安装完成后，会发现package.json文件里多出了几行描述：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&quot;devDependencies&quot;: &#123;</div><div class="line">    &quot;css-loader&quot;: &quot;^0.27.3&quot;,</div><div class="line">    &quot;style-loader&quot;: &quot;^0.14.0&quot;</div><div class="line"> &#125;</div></pre></td></tr></table></figure></p>
+<p>–save-dev表示将该模块写入devDependencies属性，指定项目开发所需要的模块，省了自己手动写入。<br>因为很多地方需要用到es6语法，接下来需要安装babel-loader:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install babel-loader babel-core babel-preset-env --save-dev</div></pre></td></tr></table></figure></p>
+<p>安装成功后还是会发现package.json文件里自动补全了模块依赖。loader暂时说到这里。</p>
+<p>接下来讲另一个重点，webpack.config.js，首先填写最基本的配置：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">var path = require(&apos;path&apos;)</div><div class="line">var webpack = require(&apos;webpack&apos;)</div><div class="line"></div><div class="line">module.exports = &#123;</div><div class="line">  entry: &apos;./src/main.js&apos;,</div><div class="line">  output: &#123;</div><div class="line">    path: path.resolve(__dirname, &apos;./dist&apos;),</div><div class="line">    publicPath: &apos;/dist/&apos;,</div><div class="line">    filename: &apos;build.js&apos;</div><div class="line">  &#125;,</div><div class="line">  module: &#123;</div><div class="line">    loaders: [</div><div class="line">      &#123;test: /\.css$/, loader: [&quot;style-loader&quot;,&quot;css-loader&quot;]&#125;</div><div class="line">    ]</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>如果过需要安装其他的loader，例如再安装一个less解析器:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install less-loader less --save-dev</div></pre></td></tr></table></figure></p>
+<p>这时候再在webpack.config.js的module里添加loaders解析规则：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&#123;test: /\.less$/, loader: [&quot;style-loader&quot;,&quot;less-loader&quot;]&#125;</div></pre></td></tr></table></figure></p>
+<p>就可以解析less文件了。到这里为止，先测试一下运行成果。</p>
+<p>静态页面 index.html 和一个 JS 入口文件 main.js：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">&lt;!-- index.html --&gt;</div><div class="line">&lt;!DOCTYPE html&gt;</div><div class="line">&lt;html lang=&quot;en&quot;&gt;</div><div class="line">&lt;html&gt;</div><div class="line">	&lt;head&gt;</div><div class="line">		&lt;meta charset=&quot;UTF-8&quot;&gt;</div><div class="line">		&lt;title&gt;webpack测试首页&lt;/title&gt;</div><div class="line">	&lt;/head&gt;</div><div class="line">	&lt;body&gt;</div><div class="line">		&lt;script src=&quot;/dist/build.js&quot;&gt;&lt;/script&gt;</div><div class="line">	&lt;/body&gt;</div><div class="line">&lt;/html&gt;</div><div class="line"></div><div class="line">// main.js</div><div class="line">require(&quot;./css/style.css&quot;);</div><div class="line">require(&quot;./css/hello.less&quot;);</div><div class="line">document.write(&quot;成功引入main.js!&quot;);</div><div class="line">document.write(require(&apos;./js/module.js&apos;));</div></pre></td></tr></table></figure></p>
+<p>js目录下的module.js 和 css目录下的两个样式文件:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">// module.js</div><div class="line">module.exports = &quot;成功引入module.js!&quot;</div><div class="line"></div><div class="line">// style.css</div><div class="line">body&#123;</div><div class="line">	background: #F2DEDE;</div><div class="line">&#125;</div><div class="line"></div><div class="line">// hello.less</div><div class="line">.box&#123;</div><div class="line">    background: #C0BFC4;border-radius: 5px;</div><div class="line">    width: 100px;height: 100px;</div><div class="line">    span&#123;</div><div class="line">        color: #F2403D;text-align: center;</div><div class="line">        display: flex;line-height: 100px;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>文件准备好后，npm去到项目根目录，运行命令：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">webpack-dev-server</div></pre></td></tr></table></figure></p>
+<p>这时候打开浏览器，localhost:8080 就可以看到编译效果了。当你修改css和js文件时，浏览器会实时刷新。<br><img src="http://p1.bqimg.com/567571/51785060a7bc8a3a.png"></p>
+<p>服务器运行的命令也可以集成到配置文件里，首选需要把webpack-dev-server安装到项目依赖中，然后在package.json的script配置里加上一条信息:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&quot;scripts&quot;: &#123;</div><div class="line">    &quot;test&quot;: &quot;echo \&quot;Error: no test specified\&quot; &amp;&amp; exit 1&quot;,</div><div class="line">    &quot;dev&quot;: &quot;webpack-dev-server --open --inline --hot&quot;</div><div class="line">  &#125;,</div></pre></td></tr></table></figure></p>
+<p>这条dev的命令，表示运行服务器并打开窗口，执行热加载模式。退出npm重新进入项目根目录下，执行命令：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm run dev</div></pre></td></tr></table></figure></p>
+<p>npm run表示运行配置文件里的某条命令，这时候就会自动在浏览器打开localhost:8080，并且实现了修改实时刷新。</p>
 
       
     </div>
@@ -389,7 +406,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/nodejs/" rel="tag"># nodejs</a>
+            <a href="/tags/webpack/" rel="tag"># webpack</a>
           
         </div>
       
@@ -398,8 +415,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/12/01/nginx1/" rel="next" title="nginx+apache共存配置，端口分发">
-                <i class="fa fa-chevron-left"></i> nginx+apache共存配置，端口分发
+              <a href="/2016/12/16/nodejs-rename/" rel="next" title="利用nodejs批量给文件重命名">
+                <i class="fa fa-chevron-left"></i> 利用nodejs批量给文件重命名
               </a>
             
           </div>
@@ -407,10 +424,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/12/16/nodejs-rename/" rel="prev" title="利用nodejs批量给文件重命名">
-                利用nodejs批量给文件重命名 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -436,8 +449,8 @@
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2016/12/16/用nodejs搭建一写个简单的爬虫程序/"
-           data-title="用nodejs搭建一写个简单的爬虫程序" data-url="http://yoursite.com/2016/12/16/用nodejs搭建一写个简单的爬虫程序/">
+      <div class="ds-thread" data-thread-key="2017/03/15/20170315/"
+           data-title="从零开始搭建webpack项目(1)" data-url="http://yoursite.com/2017/03/15/20170315/">
       </div>
     
   </div>
