@@ -91,13 +91,13 @@
 <meta property="og:type" content="article">
 <meta property="og:title" content="从零开始搭建webpack项目(1)">
 <meta property="og:url" content="http://yoursite.com/2017/03/15/20170315/index.html">
-<meta property="og:site_name" content="炎龙的个人博客">
+<meta property="og:site_name" content="Nigular的个人博客">
 <meta property="og:description" content="最近开始入手webpack，打算结合vuejs实现模块化开发功能，先把最近本的架构搭建出来并实现运行吧。
 那么从零开始，一步步着手搭建。
 第一步先安装好所需的开发环境。首先你需要安装好Node环境以及npm(略过)。接着从webpack开始入手，用 npm 安装 Webpack：1$ npm install webpack -g
 此时 Webpack 已经安装到了全局环境下，可以通过命令行 web">
 <meta property="og:image" content="http://p1.bqimg.com/567571/51785060a7bc8a3a.png">
-<meta property="og:updated_time" content="2017-03-15T08:14:05.522Z">
+<meta property="og:updated_time" content="2017-09-08T09:01:38.546Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="从零开始搭建webpack项目(1)">
 <meta name="twitter:description" content="最近开始入手webpack，打算结合vuejs实现模块化开发功能，先把最近本的架构搭建出来并实现运行吧。
@@ -138,7 +138,7 @@
 
 
 
-  <title> 从零开始搭建webpack项目(1) | 炎龙的个人博客 </title>
+  <title> 从零开始搭建webpack项目(1) | Nigular的个人博客 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -179,7 +179,7 @@
   <div class="custom-logo-site-title">
     <a href="/"  class="brand" rel="start">
       <span class="logo-line-before"><i></i></span>
-      <span class="site-title">炎龙的个人博客</span>
+      <span class="site-title">Nigular的个人博客</span>
       <span class="logo-line-after"><i></i></span>
     </a>
   </div>
@@ -278,9 +278,9 @@
   </span>
 
   <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="炎龙的个人博客">
+    <meta itemprop="name" content="Nigular的个人博客">
     <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-      <img style="display:none;" itemprop="url image" alt="炎龙的个人博客" src="">
+      <img style="display:none;" itemprop="url image" alt="Nigular的个人博客" src="">
     </span>
   </span>
 
@@ -361,7 +361,7 @@
         <p>最近开始入手webpack，打算结合vuejs实现模块化开发功能，先把最近本的架构搭建出来并实现运行吧。</p>
 <p>那么从零开始，一步步着手搭建。</p>
 <p>第一步先安装好所需的开发环境。首先你需要安装好Node环境以及npm(略过)。接着从webpack开始入手，用 npm 安装 Webpack：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ npm install webpack -g</div></pre></td></tr></table></figure></p>
-<p>此时 Webpack 已经安装到了全局环境下，可以通过命令行 webpack -h 试试。<br>为了方便开发并实时呈现代码效果，安装webpack-dev-server是个很好的选择：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"># 安装</div><div class="line">$ npm install webpack-dev-server -g</div><div class="line"></div><div class="line"># 运行</div><div class="line">$ webpack-dev-server --progress --colors</div></pre></td></tr></table></figure></p>
+<p>此时 Webpack 已经安装到了全局环境下，可以通过命令行 webpack -h 试试。<br>为了方便开发并实时呈现代码效果，安装webpack-dev-server是个很好的选择：<br><a id="more"></a><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"># 安装</div><div class="line">$ npm install webpack-dev-server -g</div><div class="line"># 运行</div><div class="line">$ webpack-dev-server --progress --colors</div></pre></td></tr></table></figure></p>
 <p>后面的两条附加命令 –progress 和 –colors是限时进度详情的，可以不用。</p>
 <p>接下来找一个地方新建项目目录，目录下新建一个空的json文件，文件名为package.json，cmd进到该目录文件，执行命令：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ npm init</div></pre></td></tr></table></figure></p>
 <p>根据提示填好所需的基本配置，（只有项目名称（name）和项目版本（version）是必填的，其他都是选填的）。<br>填完好会自动填充到package.json里面去，形成了一个最基本的配置信息表。后期一步步增加完善该文件。<br>关于package.json文件的具体参数解析，可参考阮一峰的谋篇文章-<a href="http://javascript.ruanyifeng.com/nodejs/packagejson.html" target="_blank" rel="external">《点击传送门》</a></p>
@@ -425,6 +425,10 @@
 
           <div class="post-nav-prev post-nav-item">
             
+              <a href="/2017/09/08/gulp简易安装与脚手架/" rel="prev" title="gulp简易安装与脚手架">
+                gulp简易安装与脚手架 <i class="fa fa-chevron-right"></i>
+              </a>
+            
           </div>
         </div>
       
@@ -486,7 +490,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">7</span>
+              <span class="site-state-item-count">8</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -503,7 +507,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-count">6</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
